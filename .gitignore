@@ -1,0 +1,12 @@
+.env
+.DS_Store
+
+bot/keyscout-bot
+bot/data.json*
+analyzer/.venv/
+analyzer/items.db*
+__pycache__/
+data/
+
+*.bak
+*.tmp

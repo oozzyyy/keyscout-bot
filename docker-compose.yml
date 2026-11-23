@@ -1,0 +1,28 @@
+services:
+  analyzer:
+    build: ./analyzer
+    env_file: .env
+    environment:
+      ANALYZER_DB: /data/items.db
+      SEARCH_LOG_XLSX: /data/searches.xlsx
+    volumes:
+      - analyzerdata:/data
+    restart: unless-stopped
+
+  bot:
+    build: ./bot
+    env_file: .env
+    environment:
+      ANALYZER_URL: http://analyzer:8000
+      DATA_FILE: /data/data.json
+      WEBAPP_ADDR: ":8080"
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - botdata:/data
+    depends_on: [analyzer]
+    restart: unless-stopped
+
+volumes:
+  botdata:
+  analyzerdata:
