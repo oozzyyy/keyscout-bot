@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"
+umask 077
 ROOT=$(pwd)
 export PATH="$ROOT/bin:$PATH"
 export ANALYZER_URL=http://127.0.0.1:8001
